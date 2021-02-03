@@ -1,7 +1,7 @@
 import React from "react";
 
-const AddCOin = () => {
+const AddCoin = () => {
   return <div></div>;
 };
 
-export default AddCOin;
+export default AddCoin;

@@ -1,32 +1,32 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
 }
 
 body {
-    background-color: black;
+  background-color: black;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
-.coinlist-image{
-    width: 50px;
+.coinlist-image {
+  width: 50px;
 }
 
 .coin-data-category {
-    font-size: 10px;
+  font-size: 10px;
 }
 
 .delete-icon {
-    display: none;
-    position: absolute;
-    right: 6px;
+  display: none;
+  position: absolute;
+  right: 6px;
 }
 
 .coin:hover .delete-icon {
-    display: block;
+  display: block;
 }
