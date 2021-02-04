@@ -14,7 +14,12 @@ ul {
 }
 
 .coinlist-image {
-  width: 50px;
+  width: 70px;
+}
+
+.coinsummary {
+  border-color: white;
+  border-style: outset;
 }
 
 .coin-data-category {
