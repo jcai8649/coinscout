@@ -1,11 +1,10 @@
-import React from 'react';
+import React from "react";
+import { useParams } from "react-router";
 
 const CoinDetailPage = () => {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+  const x = useParams();
+  console.log(x);
+  return <div></div>;
+};
 
-export default CoinDetailPage
+export default CoinDetailPage;
