@@ -6,7 +6,7 @@ const Coin = ({ id, coin, deleteCoin }) => {
     <Link to={`/coins/${coin.id}`} className="text-decoration-none my-1 coin">
       <li className="coinlist-item list-group-item list-group-item-action d-flex justify-content-between align-items-center text-dark rounded">
         <img className="coinlist-image" src={coin.image} alt="" />
-        <span>{coin.current_price}</span>
+        <span>${coin.current_price}</span>
         <span
           className={
             coin.price_change_percentage_24h >= 0
@@ -19,7 +19,7 @@ const Coin = ({ id, coin, deleteCoin }) => {
           ) : (
             <i className="fas fa-long-arrow-alt-down mr-1"></i>
           )}
-          {coin.price_change_percentage_24h}
+          {coin.price_change_percentage_24h.toFixed(2)}%
         </span>
         <i
           onClick={(e) => {
