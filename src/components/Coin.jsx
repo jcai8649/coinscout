@@ -5,7 +5,11 @@ const Coin = ({ id, coin, deleteCoin }) => {
   return (
     <Link to={`/coins/${coin.id}`} className="text-decoration-none my-1 coin">
       <li className="coinlist-item list-group-item list-group-item-action d-flex justify-content-between align-items-center text-dark rounded">
-        <img className="coinlist-image" src={coin.image} alt="" />
+        <img
+          className="coinlist-image"
+          src={coin.image}
+          alt={coin.name + "logo"}
+        />
         <span>${coin.current_price}</span>
         <span
           className={

@@ -10,6 +10,12 @@ export const WatchListContextProvider = (props) => {
     "litecoin",
   ]);
 
+  const addCoin = (coin) => {
+    if (watchList.indexOf(coin === -1)) {
+      setWatchList([...watchList, coin]);
+    }
+  };
+
   const deleteCoin = (coin) => {
     setWatchList(
       watchList.filter((el) => {
@@ -19,7 +25,7 @@ export const WatchListContextProvider = (props) => {
   };
 
   return (
-    <WatchListContext.Provider value={{ watchList, deleteCoin }}>
+    <WatchListContext.Provider value={{ watchList, deleteCoin, addCoin }}>
       {props.children}
     </WatchListContext.Provider>
   );

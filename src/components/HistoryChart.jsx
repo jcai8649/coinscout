@@ -42,10 +42,15 @@ const HistoryChart = ({ data }) => {
     }
   });
 
-  const renderPrice = () => {
+  const renderPriceAndImage = () => {
     if (detail) {
       return (
         <>
+          <img
+            className="coinlist-image mx-auto d-block"
+            src={data.detail.image}
+            alt={data.detail.name + " logo"}
+          />
           <p className="my-0 text-center">${detail.current_price.toFixed(2)}</p>
           <p
             className={
@@ -63,7 +68,7 @@ const HistoryChart = ({ data }) => {
 
   return (
     <div className="bg-white border mt-2 rounded p-3">
-      <div>{renderPrice()}</div>
+      <div>{renderPriceAndImage()}</div>
       <div>
         <canvas ref={chartRef} id="myChart" width={250} height={250}></canvas>
       </div>
