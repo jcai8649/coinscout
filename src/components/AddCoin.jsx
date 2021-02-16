@@ -39,6 +39,7 @@ const AddCoin = () => {
             <button
               href="#"
               onClick={() => handleClick(el)}
+              key={el}
               className="dropdown-item"
             >
               {el}

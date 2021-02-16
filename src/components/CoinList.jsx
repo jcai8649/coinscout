@@ -29,9 +29,9 @@ const CoinList = () => {
   const renderCoins = () => {
     if (isLoading) {
       return (
-        <div class="text-center">
-          <div class="spinner-border text-warning" role="status">
-            <span class="sr-only">Loading...</span>
+        <div className="text-center">
+          <div className="spinner-border text-warning" role="status">
+            <span className="sr-only">Loading...</span>
           </div>
         </div>
       );

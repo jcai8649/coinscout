@@ -22,7 +22,7 @@ const HistoryChart = ({ data }) => {
 
   useEffect(() => {
     if (chartRef && chartRef.current && detail) {
-      const chartInstance = new Chartjs(chartRef.current, {
+      new Chartjs(chartRef.current, {
         type: "line",
         data: {
           datasets: [
