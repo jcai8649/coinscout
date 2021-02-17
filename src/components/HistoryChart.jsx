@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Chartjs from "chart.js";
 import { historyOptions } from "../ChartConfigs/chartConfigs";
+import { Link } from "react-router-dom";
 
 const HistoryChart = ({ data }) => {
   const chartRef = useRef();
@@ -68,6 +69,9 @@ const HistoryChart = ({ data }) => {
 
   return (
     <div className="bg-white border mt-2 rounded p-3">
+      <Link to="/">
+        <i className="far fa-arrow-alt-circle-left fa-2x"></i>
+      </Link>
       <div>{renderPriceAndImage()}</div>
       <div>
         <canvas ref={chartRef} id="myChart" width={250} height={250}></canvas>
