@@ -1,53 +1,54 @@
 import React, { useContext, useState } from "react";
+import debounce from "lodash/debounce";
+import AsyncSelect from "react-select/async";
 import { WatchListContext } from "../context/watchListContext";
 
 const AddCoin = () => {
-  const [isActive, setIsActive] = useState(false);
+  const [selectedCoin, setSelectedCoin] = useState(null);
   const { addCoin } = useContext(WatchListContext);
 
   const availableCoins = [
-    "bitcoin",
-    "ethereum",
-    "ripple",
-    "tether",
-    "bitcoin-cash",
-    "litecoin",
-    "eos",
-    "okb",
-    "tezos",
-    "cardano",
+    { value: "bitcoin", label: "Bitcoin" },
+    { value: "ethereum", label: "Ethereum" },
+    { value: "cardano", label: "Cardano" },
+    { value: "dogecoin", label: "Dogecoin" },
+    { value: "ripple", label: "Ripple" },
+    { value: "tether", label: "Tether" },
+    { value: "bitcoin-cash", label: "Bitcoin Cash" },
+    { value: "litecoin", label: "Litecoin" },
+    { value: "eos", label: "EOS" },
+    { value: "okb", label: "OKB" },
+    { value: "tezos", label: "Tezos" },
   ];
 
-  const handleClick = (coin) => {
-    addCoin(coin);
-    setIsActive(false);
+  const handleOnChange = (selectedCoin) => {
+    addCoin(selectedCoin.value);
+  };
+
+  const loadOptions = async (inputText, cb) => {
+    const response = await fetch(`https://api.coingecko.com/api/v3/coins/list`);
+    const json = await response.json();
+    debounce(
+      cb(
+        json
+          .filter(
+            ({ name, id }) => name.includes(inputText) || id.includes(inputText)
+          )
+          .map(({ name, id }) => ({ label: name, value: id }))
+      ),
+      300
+    );
   };
 
   return (
-    <div className="dropdown">
-      <button
-        onClick={() => setIsActive(!isActive)}
-        className="btn btn-primary dropdown-toggle"
-        type="button"
-      >
-        Add Coin
-      </button>
-
-      <div className={isActive ? "dropdown-menu show" : "dropdown-menu"}>
-        {availableCoins.map((el) => {
-          return (
-            <button
-              href="#"
-              onClick={() => handleClick(el)}
-              key={el}
-              className="dropdown-item"
-            >
-              {el}
-            </button>
-          );
-        })}
-      </div>
-    </div>
+    <AsyncSelect
+      value={selectedCoin}
+      cacheOptions
+      onChange={handleOnChange}
+      defaultOptions={availableCoins}
+      placeholder={"Search Crypto..."}
+      loadOptions={loadOptions}
+    />
   );
 };
 
