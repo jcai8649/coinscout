@@ -30,7 +30,7 @@ const CoinList = () => {
     if (isLoading) {
       return (
         <div className="text-center">
-          <div className="spinner-border text-warning" role="status">
+          <div className="spinner-border text-warning mt-1" role="status">
             <span className="sr-only">Loading...</span>
           </div>
         </div>
@@ -38,7 +38,7 @@ const CoinList = () => {
     }
 
     return (
-      <ul className="coinlist list-group mt-2 gap-2">
+      <ul className="coinlist list-group mt-2 gap-2 opacity-3">
         {coins.map((coin) => {
           return <Coin key={coin.id} coin={coin} deleteCoin={deleteCoin} />;
         })}

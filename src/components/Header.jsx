@@ -1,9 +1,19 @@
 import React from "react";
+import Logo from "../assets/logo_transparent.png";
 
 const Header = () => {
   return (
     <div>
-      <h1 className="text-center text-warning mt-3 mb-4">CoinScout</h1>
+      <img
+        style={{
+          width: "13rem",
+          display: "block",
+          marginLeft: "auto",
+          marginRight: "auto",
+        }}
+        src={Logo}
+        alt="logo"
+      />
     </div>
   );
 };

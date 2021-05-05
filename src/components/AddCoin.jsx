@@ -27,16 +27,16 @@ const AddCoin = () => {
 
   const loadOptions = async (inputText, cb) => {
     const response = await fetch(`https://api.coingecko.com/api/v3/coins/list`);
-    const json = await response.json();
+    const coinList = await response.json();
     debounce(
       cb(
-        json
+        coinList
           .filter(
             ({ name, id }) => name.includes(inputText) || id.includes(inputText)
           )
           .map(({ name, id }) => ({ label: name, value: id }))
       ),
-      300
+      1000
     );
   };
 
@@ -46,7 +46,7 @@ const AddCoin = () => {
       cacheOptions
       onChange={handleOnChange}
       defaultOptions={availableCoins}
-      placeholder={"Search Crypto..."}
+      placeholder={"Search"}
       loadOptions={loadOptions}
     />
   );

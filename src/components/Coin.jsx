@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { numberWithCommas } from "../utils";
 
 const Coin = ({ id, coin, deleteCoin }) => {
   return (
@@ -10,7 +11,7 @@ const Coin = ({ id, coin, deleteCoin }) => {
           src={coin.image}
           alt={coin.name + "logo"}
         />
-        <span>${coin.current_price}</span>
+        <span>${numberWithCommas(coin.current_price)}</span>
         <span
           className={
             coin.price_change_percentage_24h >= 0

@@ -41,7 +41,7 @@ const HistoryChart = ({ data }) => {
         },
       });
     }
-  });
+  }, [detail, determineTimeFormat]);
 
   const renderPriceAndImage = () => {
     if (detail) {
@@ -52,7 +52,12 @@ const HistoryChart = ({ data }) => {
             src={data.detail.image}
             alt={data.detail.name + " logo"}
           />
-          <p className="my-0 text-center">${detail.current_price.toFixed(2)}</p>
+          <p className="my-0 text-center">
+            $
+            {detail.current_price > 1
+              ? detail.current_price.toFixed(2)
+              : detail.current_price}
+          </p>
           <p
             className={
               detail.price_change_24h < 0
