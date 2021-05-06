@@ -1,14 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import Chartjs from "chart.js";
 import { historyOptions } from "../ChartConfigs/chartConfigs";
 import { Link } from "react-router-dom";
+import CoinData from "../components/CoinData";
 
 const HistoryChart = ({ data }) => {
   const chartRef = useRef();
   const { day, week, year, detail } = data;
   const [timeFormat, setTimeFormat] = useState("24h");
 
-  const determineTimeFormat = () => {
+  const determineTimeFormat = useCallback(() => {
     switch (timeFormat) {
       case "24h":
         return day;
@@ -19,7 +20,7 @@ const HistoryChart = ({ data }) => {
       default:
         return day;
     }
-  };
+  }, [day, timeFormat, week, year]);
 
   useEffect(() => {
     if (chartRef && chartRef.current && detail) {
@@ -47,6 +48,7 @@ const HistoryChart = ({ data }) => {
     if (detail) {
       return (
         <>
+          <h4 className="text-center">{data.detail.name}</h4>
           <img
             className="coinlist-image mx-auto d-block"
             src={data.detail.image}
@@ -90,7 +92,7 @@ const HistoryChart = ({ data }) => {
         </button>
         <button
           onClick={() => setTimeFormat("7d")}
-          className="btn btn-outline-secondary btn-sm"
+          className="btn btn-outline-secondary btn-sm m-2"
         >
           7d
         </button>
@@ -101,6 +103,7 @@ const HistoryChart = ({ data }) => {
           1y
         </button>
       </div>
+      <CoinData data={data.detail} />
     </div>
   );
 };

@@ -4,8 +4,12 @@ import { numberWithCommas } from "../utils";
 
 const Coin = ({ id, coin, deleteCoin }) => {
   return (
-    <Link to={`/coins/${coin.id}`} className="text-decoration-none my-1 coin">
-      <li className="coinlist-item list-group-item list-group-item-action d-flex justify-content-between align-items-center text-dark rounded">
+    <Link
+      to={`/coins/${coin.id}`}
+      className="text-decoration-none my-1 coin shadow"
+    >
+      <li className="coinlist-item list-group-item list-group-item-action d-flex justify-content-between align-items-center flex-column text-dark border-white rounded">
+        <h6>{coin.name}</h6>
         <img
           className="coinlist-image"
           src={coin.image}

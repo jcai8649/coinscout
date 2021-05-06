@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import coinGecko from "../apis/coinGecko";
-import CoinData from "../components/CoinData";
 import HistoryChart from "../components/HistoryChart";
 
 const CoinDetailPage = () => {
@@ -73,7 +72,6 @@ const CoinDetailPage = () => {
     return (
       <div className="coinlist">
         <HistoryChart data={coinData} />
-        <CoinData data={coinData.detail} />
       </div>
     );
   };

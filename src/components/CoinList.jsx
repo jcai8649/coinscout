@@ -38,7 +38,7 @@ const CoinList = () => {
     }
 
     return (
-      <ul className="coinlist list-group mt-2 gap-2 opacity-3">
+      <ul className="coinlist list-group mt-2 gap-3 coinlist-grid">
         {coins.map((coin) => {
           return <Coin key={coin.id} coin={coin} deleteCoin={deleteCoin} />;
         })}
@@ -49,4 +49,4 @@ const CoinList = () => {
   return <div>{renderCoins()}</div>;
 };
 
-export default CoinList;
+export default React.memo(CoinList);
