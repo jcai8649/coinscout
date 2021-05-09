@@ -5,7 +5,7 @@ import { WatchListContext } from "../context/watchListContext";
 
 const AddCoin = () => {
   const [selectedCoin, setSelectedCoin] = useState(null);
-  const { addCoin } = useContext(WatchListContext);
+  const { addCoin, watchList } = useContext(WatchListContext);
 
   const availableCoins = [
     { value: "bitcoin", label: "Bitcoin" },
@@ -22,11 +22,12 @@ const AddCoin = () => {
   ];
 
   const handleOnChange = (selectedCoin) => {
-    addCoin(selectedCoin.value);
+    if (watchList.indexOf(selectedCoin.value) === -1) {
+      addCoin(selectedCoin.value);
+    }
   };
 
   const loadOptions = debounce((inputText, cb) => {
-    console.log("debounced");
     fetch(`https://api.coingecko.com/api/v3/coins/list`)
       .then((result) => result.json())
       .then((coinList) =>
@@ -39,7 +40,7 @@ const AddCoin = () => {
             .map(({ name, id }) => ({ label: name, value: id }))
         )
       );
-  }, 500);
+  }, 1000);
 
   return (
     <AsyncSelect

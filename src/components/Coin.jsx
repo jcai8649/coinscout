@@ -6,9 +6,9 @@ const Coin = ({ id, coin, deleteCoin }) => {
   return (
     <Link
       to={`/coins/${coin.id}`}
-      className="text-decoration-none my-1 coin shadow"
+      className="text-decoration-none my-1 coin shadow rounded"
     >
-      <li className="coinlist-item list-group-item list-group-item-action d-flex justify-content-between align-items-center flex-column text-dark border-white rounded">
+      <li className="coinlist-item list-group-item list-group-item-action d-flex justify-content-between align-items-center flex-column text-dark border-white">
         <h6>{coin.name}</h6>
         <img
           className="coinlist-image"

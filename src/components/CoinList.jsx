@@ -17,7 +17,7 @@ const CoinList = () => {
           ids: watchList.join(","),
         },
       });
-      setCoins(response.data);
+      setCoins(response.data.sort((a, b) => a.name.localeCompare(b.name)));
       setIsLoading(false);
     };
 
