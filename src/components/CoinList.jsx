@@ -30,9 +30,7 @@ const CoinList = () => {
     if (isLoading) {
       return (
         <div className="text-center">
-          <div className="spinner-border text-warning mt-1" role="status">
-            <span className="sr-only">Loading...</span>
-          </div>
+          <div className="spinner-border text-warning mt-2" role="status" />
         </div>
       );
     }
