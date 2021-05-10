@@ -23,6 +23,17 @@ const HistoryChart = ({ data }) => {
   }, [day, timeFormat, week, year]);
 
   useEffect(() => {
+    //Remove other charts, leaving only the latest one
+    for (let chart in Chartjs.instances) {
+      if (
+        Object.keys(Chartjs.instances).length >= 1 &&
+        Chartjs.instances[chart]
+      ) {
+        Chartjs.instances[chart].destroy();
+      }
+    }
+
+    //Make
     if (chartRef && chartRef.current && detail) {
       new Chartjs(chartRef.current, {
         type: "line",

@@ -19,13 +19,17 @@ const Header = () => {
         href="https://github.com/jcai8649/coinscout"
         rel="noreferrer"
         target="_blank"
+        style={{
+          width: "25px",
+          height: "25px",
+        }}
       >
         <AiOutlineGithub
           style={{
             width: "25px",
             height: "25px",
           }}
-          className="text-white flex-end mt-3"
+          className="text-white mt-3"
         />
       </a>
     </div>
