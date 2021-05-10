@@ -29,7 +29,7 @@ const Header = () => {
             width: "25px",
             height: "25px",
           }}
-          className="text-white mt-3"
+          className="text-white flex mt-3"
         />
       </a>
     </div>

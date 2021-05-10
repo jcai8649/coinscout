@@ -4,7 +4,7 @@ import AsyncSelect from "react-select/async";
 import { WatchListContext } from "../context/watchListContext";
 
 const AddCoin = () => {
-  const [selectedCoin, setSelectedCoin] = useState(null);
+  const [selectedCoin] = useState(null);
   const { addCoin, watchList } = useContext(WatchListContext);
 
   const availableCoins = [
