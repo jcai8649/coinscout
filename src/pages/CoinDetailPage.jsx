@@ -20,37 +20,59 @@ const CoinDetailPage = () => {
   useEffect(() => {
     const fetchdata = async () => {
       setIsLoading(true);
-      const [day, week, year, detail] = await Promise.all([
-        coinGecko.get(`/coins/${id}/market_chart`, {
-          params: {
-            vs_currency: "usd",
-            days: "1",
-          },
-        }),
-        coinGecko.get(`/coins/${id}/market_chart`, {
-          params: {
-            vs_currency: "usd",
-            days: "7",
-          },
-        }),
-        coinGecko.get(`/coins/${id}/market_chart`, {
-          params: {
-            vs_currency: "usd",
-            days: "365",
-          },
-        }),
-        coinGecko.get("/coins/markets", {
-          params: {
-            vs_currency: "usd",
-            ids: id,
-          },
-        }),
-      ]);
+      const [day, week, month, threeMonth, year, max, detail] =
+        await Promise.all([
+          coinGecko.get(`/coins/${id}/market_chart`, {
+            params: {
+              vs_currency: "usd",
+              days: "1",
+            },
+          }),
+          coinGecko.get(`/coins/${id}/market_chart`, {
+            params: {
+              vs_currency: "usd",
+              days: "7",
+            },
+          }),
+          coinGecko.get(`/coins/${id}/market_chart`, {
+            params: {
+              vs_currency: "usd",
+              days: "30",
+            },
+          }),
+          coinGecko.get(`/coins/${id}/market_chart`, {
+            params: {
+              vs_currency: "usd",
+              days: "90",
+            },
+          }),
+          coinGecko.get(`/coins/${id}/market_chart`, {
+            params: {
+              vs_currency: "usd",
+              days: "365",
+            },
+          }),
+          coinGecko.get(`/coins/${id}/market_chart`, {
+            params: {
+              vs_currency: "usd",
+              days: "max",
+            },
+          }),
+          coinGecko.get("/coins/markets", {
+            params: {
+              vs_currency: "usd",
+              ids: id,
+            },
+          }),
+        ]);
 
       setCoinData({
         day: formatData(day.data.prices),
         week: formatData(week.data.prices),
+        month: formatData(month.data.prices),
+        threeMonth: formatData(threeMonth.data.prices),
         year: formatData(year.data.prices),
+        max: formatData(max.data.prices),
         detail: detail.data[0],
       });
       setIsLoading(false);

@@ -3,10 +3,11 @@ import Chartjs from "chart.js";
 import { historyOptions } from "../ChartConfigs/chartConfigs";
 import { Link } from "react-router-dom";
 import CoinData from "../components/CoinData";
+import { max } from "moment";
 
 const HistoryChart = ({ data }) => {
   const chartRef = useRef();
-  const { day, week, year, detail } = data;
+  const { day, week, month, threeMonth, year, max, detail } = data;
   const [timeFormat, setTimeFormat] = useState("24h");
 
   const determineTimeFormat = useCallback(() => {
@@ -15,12 +16,18 @@ const HistoryChart = ({ data }) => {
         return day;
       case "7d":
         return week;
+      case "30d":
+        return month;
+      case "90d":
+        return threeMonth;
       case "1y":
         return year;
+      case "max":
+        return max;
       default:
         return day;
     }
-  }, [day, timeFormat, week, year]);
+  }, [day, week, month, threeMonth, year, max, timeFormat]);
 
   useEffect(() => {
     //Remove other charts, leaving only the latest one
@@ -94,24 +101,42 @@ const HistoryChart = ({ data }) => {
       <div>
         <canvas ref={chartRef} id="myChart" width={250} height={250}></canvas>
       </div>
-      <div className="chart-button mt-1">
+      <div className="chart-button mt-1 ">
         <button
           onClick={() => setTimeFormat("24h")}
-          className="btn btn-outline-secondary btn-sm"
+          className="btn btn-outline-secondary btn-sm m-1"
         >
           24h
         </button>
         <button
           onClick={() => setTimeFormat("7d")}
-          className="btn btn-outline-secondary btn-sm m-2"
+          className="btn btn-outline-secondary btn-sm m-1"
         >
-          7d
+          week
+        </button>
+        <button
+          onClick={() => setTimeFormat("30d")}
+          className="btn btn-outline-secondary btn-sm m-1"
+        >
+          month
+        </button>
+        <button
+          onClick={() => setTimeFormat("90d")}
+          className="btn btn-outline-secondary btn-sm m-1"
+        >
+          3 months
         </button>
         <button
           onClick={() => setTimeFormat("1y")}
-          className="btn btn-outline-secondary btn-sm"
+          className="btn btn-outline-secondary btn-sm m-1"
         >
-          1y
+          year
+        </button>
+        <button
+          onClick={() => setTimeFormat("max")}
+          className="btn btn-outline-secondary btn-sm m-1"
+        >
+          max
         </button>
       </div>
       <CoinData data={data.detail} />
