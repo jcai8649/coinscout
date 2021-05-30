@@ -14,7 +14,7 @@ VIEW LIVE: https://coinscout.herokuapp.com/
 
 Future directions:
 
-- Add sorting options to sort cryptocurrencies based on biggest gains/losses
+- Add sorting options to sort cryptocurrencies based on largest gains/losses
 - Convert cryptocurrency to other countries' monetary values
 - Store data in a server database such as MongoDB
 
