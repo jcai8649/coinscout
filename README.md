@@ -10,7 +10,7 @@ VIEW LIVE: https://coinscout.herokuapp.com/
 - Implement debounce from [lodash](https://lodash.com/docs/4.17.15#debounce) to throttle unnecessary fetch calls to the API
 - Utilizes React Context API to reduce prop drilling in components
 - Store searched cryptocurrencies in local storage for data persistence
-- Display cryptocurrencies' details in animated charts with multiple timeline options
+- Display cryptocurrencies' details in an animated chart with multiple timeline options
 
 Future directions:
 
