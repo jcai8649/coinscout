@@ -12,11 +12,10 @@ VIEW LIVE: https://coinscout.herokuapp.com/
 - Store searched cryptocurrencies in local storage for data persistence
 - Display cryptocurrencies' details in an animated chart with multiple timeline options
 
-Future directions:
+Future directions:Cancel changes
 
 - Add sorting options to sort cryptocurrencies based on biggest gains/losses
 - Convert cryptocurrency to other countries' monetary values
 - Store data in a server database such as MongoDB
 
-License
-This project is licensed under the MIT License
+
