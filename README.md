@@ -19,3 +19,6 @@ Future directions:Cancel changes
 - Store data in a server database such as MongoDB
 
 
+### License
+
+This project is licensed under the MIT License
