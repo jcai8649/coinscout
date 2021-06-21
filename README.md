@@ -12,7 +12,7 @@ VIEW LIVE: https://coinscout.herokuapp.com/
 - Store searched cryptocurrencies in local storage for data persistence
 - Display cryptocurrencies' details in an animated chart with multiple timeline options
 
-Future directions:Cancel changes
+Future directions:
 
 - Add sorting options to sort cryptocurrencies based on largest gains/losses
 - Convert cryptocurrency to other countries' monetary values
